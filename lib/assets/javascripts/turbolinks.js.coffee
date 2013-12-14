@@ -288,10 +288,9 @@ installHistoryChangeHandler = (event) ->
       visit event.target.location.href
 
 installHistoryChangeHandlerEx = (event) ->
-  if confirm('Are you sure you want installHistoryChangeHandlerEx to this page?')
+  unless pageChangePrevented()
     installHistoryChangeHandler event
   else
-    event.stopPropagation();
     event.preventDefault()
 
 initializeTurbolinks = ->
