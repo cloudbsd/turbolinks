@@ -299,7 +299,7 @@ initializeTurbolinks = ->
   createDocument = browserCompatibleDocumentParser()
 
   document.addEventListener 'click', installClickHandlerLast, true
-  window.addEventListener 'popstate', installHistoryChangeHandlerEx, false
+  window.addEventListener 'popstate', installHistoryChangeHandlerEx, true
 
 browserSupportsPushState =
   window.history and window.history.pushState and window.history.replaceState and window.history.state != undefined
