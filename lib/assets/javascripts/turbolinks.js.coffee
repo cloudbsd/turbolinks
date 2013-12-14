@@ -287,13 +287,20 @@ installHistoryChangeHandler = (event) ->
     else
       visit event.target.location.href
 
+installHistoryChangeHandlerEx = (event) ->
+  if confirm('Are you sure you want installHistoryChangeHandlerEx to this page?')
+    installHistoryChangeHandler event
+  else
+    event.stopPropagation();
+    event.preventDefault()
+
 initializeTurbolinks = ->
   rememberCurrentUrl()
   rememberCurrentState()
   createDocument = browserCompatibleDocumentParser()
 
   document.addEventListener 'click', installClickHandlerLast, true
-  window.addEventListener 'popstate', installHistoryChangeHandler, false
+  window.addEventListener 'popstate', installHistoryChangeHandlerEx, false
 
 browserSupportsPushState =
   window.history and window.history.pushState and window.history.replaceState and window.history.state != undefined
